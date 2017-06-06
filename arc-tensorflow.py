@@ -1,6 +1,7 @@
 import tensorflow as tf
 from distutils.version import LooseVersion
 import warnings
+import numpy as np
 
 
 # Check TensorFlow Version
