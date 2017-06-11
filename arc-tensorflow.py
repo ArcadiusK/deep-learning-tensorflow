@@ -147,3 +147,15 @@ def model_loss(input_real, input_z, out_channel_dim):
                     
         if steps % 100 != 0:
             show_generator_output(sess, 25, input_z, data_shape[3], data_image_mode)
+            
+            
+batch_size = 128
+z_dim = 100
+learning_rate = 0.0002
+beta1 = 0.5
+epochs = 1
+
+celeba_dataset = helper.Dataset('celeba', glob(os.path.join(data_dir, 'img_align_celeba/*.jpg')))
+with tf.Graph().as_default():
+    train(epochs, batch_size, z_dim, learning_rate, beta1, celeba_dataset.get_batches,
+          celeba_dataset.shape, celeba_dataset.image_mode)
